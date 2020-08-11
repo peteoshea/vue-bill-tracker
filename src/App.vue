@@ -16,6 +16,7 @@
 import NavBar from "./components/NavBar.vue";
 import Chart from "./components/Chart.vue";
 import BillsTable from "./components/BillsTable.vue";
+import "@/assets/css/tailwind.css";
 
 export default {
   name: "App",
