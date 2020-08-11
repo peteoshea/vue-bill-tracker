@@ -1,19 +1,30 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <main>
+    <NavBar />
+    <div class="container flex">
+      <div class="w-1/2">
+        <BillsTable />
+      </div>
+      <div class="w-1/2">
+        <Chart :bills="activeBills" />
+      </div>
+    </div>
+  </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from "./components/NavBar.vue";
+import Chart from "./components/Chart.vue";
+import BillsTable from "./components/BillsTable.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Chart,
+    BillsTable,
+    NavBar,
+  },
+};
 </script>
 
 <style>
