@@ -11,7 +11,7 @@
             v-model="category"
           />
           <button
-            class="flex-no-shrink p-2 border-2 rounded bg-teal text-white border-teal hover:text-white hover:bg-teal"
+            class="flex-no-shrink p-2 border-2 rounded bg-teal-600 text-white border-teal-700 hover:text-white hover:bg-teal-500"
             @click="handleClick"
           >
             Add
