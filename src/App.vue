@@ -34,14 +34,13 @@ export default {
     return {
       bills: [],
       categories: [],
-      shouldShowAddCategory: true,
+      shouldShowAddCategory: false,
     };
   },
   mounted() {
     if (localStorage.getItem("categories")) {
       this.categories = JSON.parse(localStorage.getItem("categories"));
     }
-
     if (!this.categories.length) {
       this.shouldShowAddCategory = true;
     }
