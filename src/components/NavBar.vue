@@ -19,6 +19,6 @@ export default {
 
 <style lang="postcss" scoped>
 .top-menu-item {
-  @apply .p-4 .inline .bg-gray-200  .uppercase .font-black;
+  @apply .p-4 .inline .bg-gray-200 .uppercase .font-black;
 }
 </style>
