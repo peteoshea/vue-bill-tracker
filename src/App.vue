@@ -7,7 +7,7 @@
         <NavBar :categories="categories" v-on:triggerShowAddCategory="triggerShowAddCategory" />
         <div class="container flex">
           <div class="w-1/2">
-            <BillsTable />
+            <BillsTable :bills="bills" />
           </div>
           <div class="w-1/2">
             <Chart :bills="activeBills" />
