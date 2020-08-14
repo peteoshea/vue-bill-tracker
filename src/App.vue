@@ -4,17 +4,23 @@
     <div v-else>
       <AddBill v-if="shouldShowAddBill" :categories="categories" v-on:addBill="addBill" />
       <div v-else>
-        <NavBar :categories="categories" v-on:triggerShowAddCategory="triggerShowAddCategory" />
+        <NavBar
+          :activeCategory="activeCategory"
+          :categories="categories"
+          v-on:clearActiveCategory="clearActiveCategory"
+          v-on:setActiveCategory="setActiveCategory"
+          v-on:triggerShowAddCategory="triggerShowAddCategory"
+        />
         <div class="container flex">
-          <div class="w-1/2">
+          <div class="w-1/2 bg-gray-100">
             <BillsTable
-              :bills="bills"
-              v-on:triggerShowAddBill="triggerShowAddBill"
+              :bills="activeBills"
               v-on:removeBill="removeBill"
+              v-on:triggerShowAddBill="triggerShowAddBill"
             />
           </div>
-          <div class="w-1/2">
-            <Chart :bills="bills" />
+          <div class="w-1/2 bg-gray-100">
+            <Chart :bills="activeBills" />
           </div>
         </div>
       </div>
@@ -44,6 +50,7 @@ export default {
   },
   data() {
     return {
+      activeCategory: "",
       bills: [],
       categories: [],
       shouldShowAddBill: false,
@@ -70,10 +77,16 @@ export default {
       this.categories.push(category);
       this.shouldShowAddCategory = false;
     },
+    clearActiveCategory() {
+      this.activeCategory = "";
+    },
     removeBill(index) {
       this.bills = this.bills
         .slice(0, index)
         .concat(this.bills.slice(index + 1, this.bills.length));
+    },
+    setActiveCategory(category) {
+      this.activeCategory = category;
     },
     triggerShowAddBill() {
       this.shouldShowAddBill = true;
@@ -88,6 +101,15 @@ export default {
     },
     categories() {
       localStorage.setItem("categories", JSON.stringify(this.categories));
+    },
+  },
+  computed: {
+    activeBills() {
+      return this.bills
+        .filter((bill) =>
+          this.activeCategory ? bill.category === this.activeCategory : true
+        )
+        .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
     },
   },
 };
