@@ -19,7 +19,7 @@
         <td>&pound;{{bill.amount}}</td>
         <td>{{bill.category}}</td>
         <td>
-          <button @click="removeBill(index)">𝗫</button>
+          <button class="text-red-600" @click="removeBill(index)">𝗫</button>
         </td>
       </tr>
     </tbody>
