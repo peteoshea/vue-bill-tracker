@@ -9,8 +9,13 @@
       </tr>
     </thead>
     <tbody>
+      <tr class="p-4 bg-blue-200 text-center">
+        <td colspan="4">
+          <button class="underline" @click="triggerShowAddBill">Add new</button>
+        </td>
+      </tr>
       <tr v-for="(bill, index) in bills" :key="index" class="p-4">
-        <td>{{bill.date}}</td>
+        <td>{{bill.date | moment("DD/MM/YYYY")}}</td>
         <td>&pound;{{bill.amount}}</td>
         <td>{{bill.category}}</td>
       </tr>
@@ -22,5 +27,10 @@
 export default {
   name: "BillsTable",
   props: ["bills"],
+  methods: {
+    triggerShowAddBill: function () {
+      this.$emit("triggerShowAddBill");
+    },
+  },
 };
 </script>

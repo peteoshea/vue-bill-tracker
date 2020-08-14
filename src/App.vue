@@ -7,7 +7,7 @@
         <NavBar :categories="categories" v-on:triggerShowAddCategory="triggerShowAddCategory" />
         <div class="container flex">
           <div class="w-1/2">
-            <BillsTable :bills="bills" />
+            <BillsTable :bills="bills" v-on:triggerShowAddBill="triggerShowAddBill" />
           </div>
           <div class="w-1/2">
             <Chart :bills="activeBills" />
@@ -25,6 +25,9 @@ import BillsTable from "./components/BillsTable.vue";
 import Chart from "./components/Chart.vue";
 import NavBar from "./components/NavBar.vue";
 import "@/assets/css/tailwind.css";
+import Vue from "vue";
+
+Vue.use(require("vue-moment"));
 
 export default {
   name: "App",
@@ -39,7 +42,7 @@ export default {
     return {
       bills: [],
       categories: [],
-      shouldShowAddBill: true,
+      shouldShowAddBill: false,
       shouldShowAddCategory: false,
     };
   },
@@ -62,6 +65,9 @@ export default {
     addCategory(category) {
       this.categories.push(category);
       this.shouldShowAddCategory = false;
+    },
+    triggerShowAddBill() {
+      this.shouldShowAddBill = true;
     },
     triggerShowAddCategory() {
       this.shouldShowAddCategory = true;
