@@ -1,5 +1,5 @@
 <template>
-  <ul class="list-reset inline flex justify-center border-b-4 mb-0">
+  <ul class="list-reset flex justify-center border-b-4 mb-0">
     <li class="top-menu-item" v-for="category in categories" :key="category">{{category}}</li>
     <li class="top-menu-item" @click="triggerShowAddCategory">➕</li>
   </ul>

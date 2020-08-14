@@ -18,6 +18,9 @@
         <td>{{bill.date | moment("DD/MM/YYYY")}}</td>
         <td>&pound;{{bill.amount}}</td>
         <td>{{bill.category}}</td>
+        <td>
+          <button @click="removeBill(index)">𝗫</button>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -28,6 +31,9 @@ export default {
   name: "BillsTable",
   props: ["bills"],
   methods: {
+    removeBill: function (index) {
+      this.$emit("removeBill", index);
+    },
     triggerShowAddBill: function () {
       this.$emit("triggerShowAddBill");
     },
